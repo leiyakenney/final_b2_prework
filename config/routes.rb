@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :students, only: [:show], as: :student_show
 
+  resources :courses, only: [:show], as: :course_show
+
 end
