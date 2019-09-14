@@ -4,4 +4,8 @@ class Student < ApplicationRecord
 
   validates_presence_of :name
 
+  def course_grade(course_id)
+    self.student_courses.find_by(course_id: course_id).grade
+  end
+
 end
