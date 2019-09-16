@@ -6,8 +6,8 @@ RSpec.describe 'Student Show Page' do
       @leiya = Student.create(name: "Leiya Kenney")
       @listen = Course.create(name: "Art of Listening")
       @mrkt = Course.create(name: "Marketing")
-      @sc_listen = StudentCourse.create(student: @leiya, course: @listen, grade: 98.0)
-      @sc_mrkt = StudentCourse.create(student: @leiya, course: @mrkt, grade: 86.0)
+      @sc_listen = StudentCourse.create(student: @leiya, course: @listen, grade: 0.98)
+      @sc_mrkt = StudentCourse.create(student: @leiya, course: @mrkt, grade: 0.86)
     end
 
     it "I see student's name, course names, and grade for each course" do
