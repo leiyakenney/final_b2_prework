@@ -30,5 +30,32 @@ RSpec.describe 'Course Show Page' do
       expect(page).to have_content(@mrkt.name)
       expect(page).to have_content(expected)
     end
+
+    it "I see a button 'Unenroll' next to each student's name" do
+      visit course_path(@mrkt)
+
+      within "#student-#{@rox.id}" do
+        expect(page).to have_button('Unenroll')
+      end
+
+      within "#student-#{@caro.id}" do
+        expect(page).to have_button('Unenroll')
+      end
+
+      within "#student-#{@leiya.id}" do
+        expect(page).to have_button('Unenroll')
+      end
+    end
+
+    it "When I click 'Unenroll,' I am redirected to that student's show page where I do not see the course listed" do
+      visit course_path(@mrkt)
+
+      within "#student-#{@leiya.id}" do
+        click_button('Unenroll')
+
+        expect(current_path).to eq(student_path(@leiya))
+        expect(page).not_to have_content(@mrkt.name)
+      end
+    end
   end
 end

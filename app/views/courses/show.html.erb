@@ -1,5 +1,7 @@
 <h1><%= @course.name %> Student List</h1>
 
-<% @course.student_order.each do |student| %>
-  <p><%= student.name %>: <%= student.grade.round(2)%></p>
-<% end %>
+  <% @course.student_order.each do |student| %>
+    <section id="student-<%=student.id%>">
+    <p><%= student.name %>: <%= student.grade.round(2)%></p>
+    </section>
+  <% end %>
