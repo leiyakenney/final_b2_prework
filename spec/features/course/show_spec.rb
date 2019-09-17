@@ -19,7 +19,7 @@ RSpec.describe 'Course Show Page' do
 
     it "I see the course's name and each student in the course listed from highest to lowest grade" do
 
-      visit course_show_path(@mrkt)
+      visit course_path(@mrkt)
 
       expected =(
         "#{@rox.name}: #{@sc_mrkt_rc.grade.round(2)}\n"

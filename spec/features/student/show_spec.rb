@@ -11,7 +11,7 @@ RSpec.describe 'Student Show Page' do
     end
 
     it "I see student's name, course names, and grade for each course" do
-      visit student_show_path(@leiya)
+      visit student_path(@leiya)
 
       expect(page).to have_content("#{@leiya.name}")
 
