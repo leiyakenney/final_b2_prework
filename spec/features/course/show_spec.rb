@@ -11,6 +11,7 @@ RSpec.describe 'Course Show Page' do
       @leiya = Student.create(name: "Leiya Kenney")
       @caro = Student.create(name: "Caroline Song")
       @rox = Student.create(name: "Roxane Clement")
+      @g = Student.create(name: "Gasper Gasperlin")
       @mrkt = Course.create(name: "Marketing")
       @sc_mrkt_lk = StudentCourse.create(student: @leiya, course: @mrkt, grade: 0.86)
       @sc_mrkt_cs = StudentCourse.create(student: @caro, course: @mrkt, grade: 0.882)
@@ -53,9 +54,26 @@ RSpec.describe 'Course Show Page' do
       within "#student-#{@leiya.id}" do
         click_button('Unenroll')
       end
-      
+
       expect(current_path).to eq(student_path(@leiya))
       expect(page).not_to have_content(@mrkt.name)
+    end
+
+    it "I see a form to enroll a new student in this course that has a single input field for the student name" do
+      visit course_path(@mrkt)
+
+      expect(page).to have_content("Enroll A Student")
+      expect(page).to have_button("Enroll")
+    end
+
+    it "When I type in the name of the student and click 'Enroll' then a new student is created and I am redirected to that student's show page where I see the course listed" do
+      visit course_path(@mrkt)
+
+      fill_in :name, with: @g.name
+      click_button "Submit"
+
+      expect(current_path).to eq(student_path(@g))
+      expect(page).to have_content(@mrkt.name)
     end
   end
 end
