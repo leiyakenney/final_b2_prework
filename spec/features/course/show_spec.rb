@@ -52,10 +52,10 @@ RSpec.describe 'Course Show Page' do
 
       within "#student-#{@leiya.id}" do
         click_button('Unenroll')
-
-        expect(current_path).to eq(student_path(@leiya))
-        expect(page).not_to have_content(@mrkt.name)
       end
+      
+      expect(current_path).to eq(student_path(@leiya))
+      expect(page).not_to have_content(@mrkt.name)
     end
   end
 end
