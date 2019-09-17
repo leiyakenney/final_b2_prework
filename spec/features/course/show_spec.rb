@@ -11,7 +11,6 @@ RSpec.describe 'Course Show Page' do
       @leiya = Student.create(name: "Leiya Kenney")
       @caro = Student.create(name: "Caroline Song")
       @rox = Student.create(name: "Roxane Clement")
-      @g = Student.create(name: "Gasper Gasperlin")
       @mrkt = Course.create(name: "Marketing")
       @sc_mrkt_lk = StudentCourse.create(student: @leiya, course: @mrkt, grade: 0.86)
       @sc_mrkt_cs = StudentCourse.create(student: @caro, course: @mrkt, grade: 0.882)
@@ -69,10 +68,12 @@ RSpec.describe 'Course Show Page' do
     it "When I type in the name of the student and click 'Enroll' then a new student is created and I am redirected to that student's show page where I see the course listed" do
       visit course_path(@mrkt)
 
-      fill_in :name, with: @g.name
+      fill_in :name, with: "Gasper Gasperlin"
       click_button "Enroll"
 
-      expect(current_path).to eq(student_path(@g))
+      new_student = Student.last
+
+      expect(current_path).to eq(student_path(new_student))
       expect(page).to have_content(@mrkt.name)
     end
   end
