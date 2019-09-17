@@ -3,5 +3,6 @@
   <% @course.student_order.each do |student| %>
     <section id="student-<%=student.id%>">
     <p><%= student.name %>: <%= student.grade.round(2)%></p>
+    <%= button_to "Unenroll", course_student_path(@course.id, student.id), method: :delete %>
     </section>
   <% end %>
