@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :students, only: [:show]
 
-  resources :courses, only: [:show]
-
+  resources :courses, only: [:show] do
+    resources :students, only: [:destroy]
+  end
+  
 end
