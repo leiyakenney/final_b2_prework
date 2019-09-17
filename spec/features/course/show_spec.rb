@@ -70,7 +70,7 @@ RSpec.describe 'Course Show Page' do
       visit course_path(@mrkt)
 
       fill_in :name, with: @g.name
-      click_button "Submit"
+      click_button "Enroll"
 
       expect(current_path).to eq(student_path(@g))
       expect(page).to have_content(@mrkt.name)
